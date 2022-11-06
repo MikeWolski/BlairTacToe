@@ -55,26 +55,28 @@ def startscreen(xc, cc):
         pygame.draw.line(dis, color, [dis_width*1/6, dis_height*7/16], [dis_width*1/3, dis_height*1/4], int(so))
         pygame.display.update()
 
-    start_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/2-so*5, dis_height*1/3), (so*10, so*2)), text="Start", manager=manager)
-
-    ex(xc)
-    red_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2), (so*10, so*2)), text="Red", manager=manager)
-    green_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*2), (so*10, so*2)), text="Green", manager=manager)
-    blue_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*4), (so*10, so*2)), text="Blue", manager=manager)
-    yellow_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*6), (so*10, so*2)), text="Yellow", manager=manager)
-    purple_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*8), (so*10, so*2)), text="Purple", manager=manager)
-    orange_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*10), (so*10, so*2)), text="Orange", manager=manager)
-    pink_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*12), (so*10, so*2)), text="Pink", manager=manager)
-
-    circle(cc)
-    red_buttono = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2), (so*10, so*2)), text="Red", manager=manager)
-    green_buttono = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*2), (so*10, so*2)), text="Green", manager=manager)
-    blue_buttono = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*4), (so*10, so*2)), text="Blue", manager=manager)
-    yellow_buttono = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*6), (so*10, so*2)), text="Yellow", manager=manager)
-    purple_buttono = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*8), (so*10, so*2)), text="Purple", manager=manager)
-    orange_buttono = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*10), (so*10, so*2)), text="Orange", manager=manager)
-    pink_buttono = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*12), (so*10, so*2)), text="Pink", manager=manager)
     
+    ex(xc)
+    circle(cc)
+
+    box = {
+    "start_button": pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/2-so*5, dis_height*1/3), (so*10, so*2)), text="Start", manager=manager),
+    "red_button": pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2), (so*10, so*2)), text="Red", manager=manager),
+    "green_button": pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*2), (so*10, so*2)), text="Green", manager=manager),
+    "blue_button" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*4), (so*10, so*2)), text="Blue", manager=manager),
+    "yellow_button" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*6), (so*10, so*2)), text="Yellow", manager=manager),
+    "purple_button" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*8), (so*10, so*2)), text="Purple", manager=manager),
+    "orange_button" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*10), (so*10, so*2)), text="Orange", manager=manager),
+    "pink_button" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*12), (so*10, so*2)), text="Pink", manager=manager),
+    "red_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2), (so*10, so*2)), text="Red", manager=manager),
+    "green_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*2), (so*10, so*2)), text="Green", manager=manager),
+    "blue_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*4), (so*10, so*2)), text="Blue", manager=manager),
+    "yellow_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*6), (so*10, so*2)), text="Yellow", manager=manager),
+    "purple_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*8), (so*10, so*2)), text="Purple", manager=manager),
+    "orange_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*10), (so*10, so*2)), text="Orange", manager=manager),
+    "pink_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*12), (so*10, so*2)), text="Pink", manager=manager)
+    }
+
     while True:
         time_delta = clock.tick(60)/1000.0
         title("BLAIR-TAC-TOE", white, 0)
@@ -96,87 +98,87 @@ def startscreen(xc, cc):
                 dis.fill(gray)
                 manager.clear_and_reset()
                 manager.set_window_resolution((dis_width, dis_height))
-                title("TicTacToe", white, 0)
-                start_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/2-so*5, dis_height*1/3), (so*10, so*2)), text="Start", manager=manager)
+                title("BLAIR-TAC-TOE", white, 0)
                 so = (dis_width + dis_height)/80
+                box = {
+                "start_button": pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/2-so*5, dis_height*1/3), (so*10, so*2)), text="Start", manager=manager),
+                "red_button": pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2), (so*10, so*2)), text="Red", manager=manager),
+                "green_button": pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*2), (so*10, so*2)), text="Green", manager=manager),
+                "blue_button" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*4), (so*10, so*2)), text="Blue", manager=manager),
+                "yellow_button" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*6), (so*10, so*2)), text="Yellow", manager=manager),
+                "purple_button" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*8), (so*10, so*2)), text="Purple", manager=manager),
+                "orange_button" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*10), (so*10, so*2)), text="Orange", manager=manager),
+                "pink_button" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*12), (so*10, so*2)), text="Pink", manager=manager),
+                "red_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2), (so*10, so*2)), text="Red", manager=manager),
+                "green_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*2), (so*10, so*2)), text="Green", manager=manager),
+                "blue_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*4), (so*10, so*2)), text="Blue", manager=manager),
+                "yellow_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*6), (so*10, so*2)), text="Yellow", manager=manager),
+                "purple_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*8), (so*10, so*2)), text="Purple", manager=manager),
+                "orange_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*10), (so*10, so*2)), text="Orange", manager=manager),
+                "pink_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*12), (so*10, so*2)), text="Pink", manager=manager)
+                }
                 ex(xc)
-                red_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2), (so*10, so*2)), text="Red", manager=manager)
-                green_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*2), (so*10, so*2)), text="Green", manager=manager)
-                blue_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*4), (so*10, so*2)), text="Blue", manager=manager)
-                yellow_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*6), (so*10, so*2)), text="Yellow", manager=manager)
-                purple_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*8), (so*10, so*2)), text="Purple", manager=manager)
-                orange_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*10), (so*10, so*2)), text="Orange", manager=manager)
-                pink_button = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*12), (so*10, so*2)), text="Pink", manager=manager)
-
                 circle(cc)
-                red_buttono = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2), (so*10, so*2)), text="Red", manager=manager)
-                green_buttono = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*2), (so*10, so*2)), text="Green", manager=manager)
-                blue_buttono = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*4), (so*10, so*2)), text="Blue", manager=manager)
-                yellow_buttono = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*6), (so*10, so*2)), text="Yellow", manager=manager)
-                purple_buttono = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*8), (so*10, so*2)), text="Purple", manager=manager)
-                orange_buttono = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*10), (so*10, so*2)), text="Orange", manager=manager)
-                pink_buttono = pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*12), (so*10, so*2)), text="Pink", manager=manager)
-
                 pygame.display.update()
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
-                if event.ui_element == start_button:
+                if event.ui_element == box["start_button"]:
                     gameloop(cc, xc)
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
-                if event.ui_element == red_button:
+                if event.ui_element == box["red_button"]:
                     xc = red
                     ex(red)
                     pygame.display.update()
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
-                if event.ui_element == green_button:
+                if event.ui_element == box["green_button"]:
                     xc = green
                     ex(green)
                     pygame.display.update()
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
-                if event.ui_element == blue_button:
+                if event.ui_element == box["blue_button"]:
                     xc = blue
                     ex(blue)
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
-                if event.ui_element == yellow_button:
+                if event.ui_element == box["yellow_button"]:
                     xc = yellow
                     ex(yellow)
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
-                if event.ui_element == purple_button:
+                if event.ui_element == box["purple_button"]:
                     xc = purple
                     ex(purple)
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
-                if event.ui_element == orange_button:
+                if event.ui_element == box["orange_button"]:
                     xc = orange
                     ex(orange)
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
-                if event.ui_element == pink_button:
+                if event.ui_element == box["pink_button"]:
                     xc = pink
                     ex(pink)
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
-                if event.ui_element == red_buttono:
+                if event.ui_element == box["red_buttono"]:
                     cc = red
                     circle(red)
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
-                if event.ui_element == green_buttono:
+                if event.ui_element == box["green_buttono"]:
                     cc = green
                     circle(green)
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
-                if event.ui_element == blue_buttono:
+                if event.ui_element == box["blue_buttono"]:
                     cc = blue
                     circle(blue)
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
-                if event.ui_element == yellow_buttono:
+                if event.ui_element == box["yellow_buttono"]:
                     cc = yellow
                     circle(yellow)
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
-                if event.ui_element == purple_buttono:
+                if event.ui_element == box["purple_buttono"]:
                     cc = purple
                     circle(purple)
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
-                if event.ui_element == orange_buttono:
+                if event.ui_element == box["orange_buttono"]:
                     cc = orange
                     circle(orange)
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
-                if event.ui_element == pink_buttono:
+                if event.ui_element == box["pink_buttono"]:
                     cc = pink
                     circle(pink)
             manager.process_events(event)
@@ -232,7 +234,7 @@ def gameloop(cc, xc):
             self.taken = taken
             self.x = x
             self.y = y
-
+    
     a1 = area(0,0,0)
     a2 = area(1/8,0,0)
     a3 = area(2/8,0,0)
