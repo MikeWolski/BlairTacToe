@@ -14,6 +14,7 @@ yellow = (255,255,0)
 purple = (138,43,226)
 orange = (255,165,0)
 pink = (255,105,180)
+fuchsia = (255,0,255)
 dis_width = 800
 dis_height = 800
 dis = pygame.display.set_mode((dis_width, dis_height), pygame.RESIZABLE)
@@ -22,8 +23,8 @@ clock = pygame.time.Clock()
 
 manager = pygame_gui.UIManager((dis_width, dis_height))
 
-xc = red
-cc = blue
+xc = white
+cc = white
 
 def startscreen(xc, cc):
     dis_width = dis.get_width()
@@ -32,15 +33,12 @@ def startscreen(xc, cc):
     manager.set_window_resolution((dis_width, dis_height))
     so = (dis_width + dis_height)/80
     title_font = pygame.font.SysFont("bahnschrift", int(so*4))
-    font_style = pygame.font.SysFont("bahnschrift", int(so*2))
-    dis.fill(gray)
+    dis.fill(fuchsia)
     rad = dis_width
     if dis_width > dis_height:
         rad = dis_height
-
-    def message(msg,color, x, y):
-        mesg = font_style.render(msg, True, color)
-        dis.blit(mesg, [(dis_width-mesg.get_rect().width)/2, y])
+    blairimg = pygame.image.load("blair.png")
+    blairimg = pygame.transform.scale(blairimg, (so*10, so*10))
     
     def title(msg,color, y):
         mesg = title_font.render(msg, True, color)
@@ -55,7 +53,13 @@ def startscreen(xc, cc):
         pygame.draw.line(dis, color, [dis_width*1/6, dis_height*7/16], [dis_width*1/3, dis_height*1/4], int(so))
         pygame.display.update()
 
+    def blair(x, y):
+        dis.blit(blairimg, (dis_width*x, dis_height*y))
     
+    def blank(x, y):
+        pygame.draw.rect(dis, fuchsia, [dis_width*x, dis_height*y, dis_width*2/8, dis_height*2.4/8])
+        pygame.display.update()
+
     ex(xc)
     circle(cc)
 
@@ -66,20 +70,20 @@ def startscreen(xc, cc):
     "blue_button" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*4), (so*10, so*2)), text="Blue", manager=manager),
     "yellow_button" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*6), (so*10, so*2)), text="Yellow", manager=manager),
     "purple_button" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*8), (so*10, so*2)), text="Purple", manager=manager),
-    "orange_button" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*10), (so*10, so*2)), text="Orange", manager=manager),
-    "pink_button" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*12), (so*10, so*2)), text="Pink", manager=manager),
+    "white_button" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*10), (so*10, so*2)), text="White", manager=manager),
+    "blair_button" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*12), (so*10, so*2)), text="BLAIR", manager=manager),
     "red_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2), (so*10, so*2)), text="Red", manager=manager),
     "green_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*2), (so*10, so*2)), text="Green", manager=manager),
     "blue_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*4), (so*10, so*2)), text="Blue", manager=manager),
     "yellow_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*6), (so*10, so*2)), text="Yellow", manager=manager),
     "purple_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*8), (so*10, so*2)), text="Purple", manager=manager),
-    "orange_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*10), (so*10, so*2)), text="Orange", manager=manager),
-    "pink_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*12), (so*10, so*2)), text="Pink", manager=manager)
+    "white_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*10), (so*10, so*2)), text="White", manager=manager),
+    "blair_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*12), (so*10, so*2)), text="BLAIR", manager=manager)
     }
 
     while True:
         time_delta = clock.tick(60)/1000.0
-        title("BLAIR-TAC-TOE", white, 0)
+        title("BLAIR-TAC-TOE", purple, 0)
         manager.draw_ui(dis)
         pygame.display.update()
         for event in pygame.event.get():
@@ -94,11 +98,10 @@ def startscreen(xc, cc):
                     rad = dis_height
                 so = (dis_width + dis_height)/80
                 title_font = pygame.font.SysFont("bahnschrift", int(so*4))
-                font_style = pygame.font.SysFont("bahnschrift", int(so*2))
-                dis.fill(gray)
+                dis.fill(fuchsia)
                 manager.clear_and_reset()
                 manager.set_window_resolution((dis_width, dis_height))
-                title("BLAIR-TAC-TOE", white, 0)
+                title("BLAIR-TAC-TOE", purple, 0)
                 so = (dis_width + dis_height)/80
                 box = {
                 "start_button": pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/2-so*5, dis_height*1/3), (so*10, so*2)), text="Start", manager=manager),
@@ -107,18 +110,20 @@ def startscreen(xc, cc):
                 "blue_button" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*4), (so*10, so*2)), text="Blue", manager=manager),
                 "yellow_button" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*6), (so*10, so*2)), text="Yellow", manager=manager),
                 "purple_button" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*8), (so*10, so*2)), text="Purple", manager=manager),
-                "orange_button" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*10), (so*10, so*2)), text="Orange", manager=manager),
-                "pink_button" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*12), (so*10, so*2)), text="Pink", manager=manager),
+                "white_button" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*10), (so*10, so*2)), text="White", manager=manager),
+                "blair_button" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*1/4-so*5, dis_height*1/2+so*12), (so*10, so*2)), text="BLAIR", manager=manager),
                 "red_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2), (so*10, so*2)), text="Red", manager=manager),
                 "green_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*2), (so*10, so*2)), text="Green", manager=manager),
                 "blue_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*4), (so*10, so*2)), text="Blue", manager=manager),
                 "yellow_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*6), (so*10, so*2)), text="Yellow", manager=manager),
                 "purple_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*8), (so*10, so*2)), text="Purple", manager=manager),
-                "orange_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*10), (so*10, so*2)), text="Orange", manager=manager),
-                "pink_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*12), (so*10, so*2)), text="Pink", manager=manager)
+                "white_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*10), (so*10, so*2)), text="White", manager=manager),
+                "blair_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*12), (so*10, so*2)), text="BLAIR", manager=manager)
                 }
                 ex(xc)
                 circle(cc)
+                blairimg = pygame.image.load("blair.png")
+                blairimg = pygame.transform.scale(blairimg, (so*10, so*10))
                 pygame.display.update()
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
                 if event.ui_element == box["start_button"]:
@@ -126,91 +131,108 @@ def startscreen(xc, cc):
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
                 if event.ui_element == box["red_button"]:
                     xc = red
+                    blank(1/8, 1/5)
                     ex(red)
                     pygame.display.update()
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
                 if event.ui_element == box["green_button"]:
                     xc = green
+                    blank(1/8, 1/5)
                     ex(green)
                     pygame.display.update()
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
                 if event.ui_element == box["blue_button"]:
                     xc = blue
+                    blank(1/8, 1/5)
                     ex(blue)
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
                 if event.ui_element == box["yellow_button"]:
                     xc = yellow
+                    blank(1/8, 1/5)
                     ex(yellow)
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
                 if event.ui_element == box["purple_button"]:
                     xc = purple
+                    blank(1/8, 1/5)
                     ex(purple)
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
-                if event.ui_element == box["orange_button"]:
-                    xc = orange
-                    ex(orange)
+                if event.ui_element == box["white_button"]:
+                    xc = white
+                    blank(1/8, 1/5)
+                    ex(white)
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
-                if event.ui_element == box["pink_button"]:
-                    xc = pink
-                    ex(pink)
+                if event.ui_element == box["blair_button"]:
+                    xc = black
+                    blank(1/8, 1/5)
+                    blair(1/8, 1/5)
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
                 if event.ui_element == box["red_buttono"]:
                     cc = red
+                    blank(5/8, 1/5)
                     circle(red)
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
                 if event.ui_element == box["green_buttono"]:
                     cc = green
+                    blank(5/8, 1/5)
                     circle(green)
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
                 if event.ui_element == box["blue_buttono"]:
                     cc = blue
+                    blank(5/8, 1/5)
                     circle(blue)
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
                 if event.ui_element == box["yellow_buttono"]:
                     cc = yellow
+                    blank(5/8, 1/5)
                     circle(yellow)
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
                 if event.ui_element == box["purple_buttono"]:
                     cc = purple
+                    blank(5/8, 1/5)
                     circle(purple)
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
-                if event.ui_element == box["orange_buttono"]:
-                    cc = orange
-                    circle(orange)
+                if event.ui_element == box["white_buttono"]:
+                    cc = white
+                    blank(5/8, 1/5)
+                    circle(white)
             if event.type == pygame_gui.UI_BUTTON_PRESSED:
-                if event.ui_element == box["pink_buttono"]:
-                    cc = pink
-                    circle(pink)
+                if event.ui_element == box["blair_buttono"]:
+                    cc = black
+                    blank(5/8, 1/5)
+                    blair(5/8, 1/5)
             manager.process_events(event)
         manager.update(time_delta)
 def gameloop(cc, xc):
     dis_width = dis.get_width()
     dis_height = dis.get_height()
     so = (dis_width + dis_height)/240
-    dis.fill(gray)
+    dis.fill(fuchsia)
     font_style = pygame.font.SysFont("bahnschrift", int(so*8))
     game_over = False
     xcolor = xc
     ocolor = cc
+    boardcolor = purple
     rad = dis_width
     if dis_width > dis_height:
         rad = dis_height
+    blairimg = pygame.image.load("blair.png")
+    blairimg = pygame.transform.scale(blairimg, (rad/8, rad/8))
 
     def board():
-        pygame.draw.rect(dis, black, [(dis_width*1/8)-(so/2), 0, so, dis_height])
-        pygame.draw.rect(dis, black, [(dis_width*2/8)-(so/2), 0, so, dis_height])
-        pygame.draw.rect(dis, black, [(dis_width*3/8)-(so/2), 0, so, dis_height])
-        pygame.draw.rect(dis, black, [(dis_width*4/8)-(so/2), 0, so, dis_height])
-        pygame.draw.rect(dis, black, [(dis_width*5/8)-(so/2), 0, so, dis_height])
-        pygame.draw.rect(dis, black, [(dis_width*6/8)-(so/2), 0, so, dis_height])
-        pygame.draw.rect(dis, black, [(dis_width*7/8)-(so/2), 0, so, dis_height])
-        pygame.draw.rect(dis, black, [0, (dis_height*1/8)-(so/2), dis_width, so])
-        pygame.draw.rect(dis, black, [0, (dis_height*2/8)-(so/2), dis_width, so])
-        pygame.draw.rect(dis, black, [0, (dis_height*3/8)-(so/2), dis_width, so])
-        pygame.draw.rect(dis, black, [0, (dis_height*4/8)-(so/2), dis_width, so])
-        pygame.draw.rect(dis, black, [0, (dis_height*5/8)-(so/2), dis_width, so])
-        pygame.draw.rect(dis, black, [0, (dis_height*6/8)-(so/2), dis_width, so])
-        pygame.draw.rect(dis, black, [0, (dis_height*7/8)-(so/2), dis_width, so])
+        pygame.draw.rect(dis, boardcolor, [(dis_width*1/8)-(so/2), 0, so, dis_height])
+        pygame.draw.rect(dis, boardcolor, [(dis_width*2/8)-(so/2), 0, so, dis_height])
+        pygame.draw.rect(dis, boardcolor, [(dis_width*3/8)-(so/2), 0, so, dis_height])
+        pygame.draw.rect(dis, boardcolor, [(dis_width*4/8)-(so/2), 0, so, dis_height])
+        pygame.draw.rect(dis, boardcolor, [(dis_width*5/8)-(so/2), 0, so, dis_height])
+        pygame.draw.rect(dis, boardcolor, [(dis_width*6/8)-(so/2), 0, so, dis_height])
+        pygame.draw.rect(dis, boardcolor, [(dis_width*7/8)-(so/2), 0, so, dis_height])
+        pygame.draw.rect(dis, boardcolor, [0, (dis_height*1/8)-(so/2), dis_width, so])
+        pygame.draw.rect(dis, boardcolor, [0, (dis_height*2/8)-(so/2), dis_width, so])
+        pygame.draw.rect(dis, boardcolor, [0, (dis_height*3/8)-(so/2), dis_width, so])
+        pygame.draw.rect(dis, boardcolor, [0, (dis_height*4/8)-(so/2), dis_width, so])
+        pygame.draw.rect(dis, boardcolor, [0, (dis_height*5/8)-(so/2), dis_width, so])
+        pygame.draw.rect(dis, boardcolor, [0, (dis_height*6/8)-(so/2), dis_width, so])
+        pygame.draw.rect(dis, boardcolor, [0, (dis_height*7/8)-(so/2), dis_width, so])
         pygame.display.update()
 
     def circle(x, y):
@@ -223,8 +245,11 @@ def gameloop(cc, xc):
         board()
         pygame.display.update()
 
+    def blair(x, y):
+        dis.blit(blairimg, (dis_width*x, dis_height*y))
+
     def blank(x, y):
-        pygame.draw.rect(dis, gray, [dis_width*x, dis_height*y, dis_width*1/8, dis_height*1/8])
+        pygame.draw.rect(dis, fuchsia, [dis_width*x, dis_height*y, dis_width*1/8, dis_height*1/8])
         board()
         pygame.display.update()
 
@@ -300,14 +325,6 @@ def gameloop(cc, xc):
     h7 = area(6/8,7/8,0)
     h8 = area(7/8,7/8,0)
 
-    def message(msg,color):
-        mesg = font_style.render(msg, True, color)
-        dis.blit(mesg, [(dis_width-mesg.get_rect().width)/2, (dis_height-mesg.get_rect().height)/2])
-
-    def end(msg):
-        message(msg, green)
-        pygame.display.update()
-
     def move(a):
         if event.type == pygame.MOUSEBUTTONDOWN:
             if event.button == 1:
@@ -315,12 +332,26 @@ def gameloop(cc, xc):
                     if a.taken == 0:
                         a.taken += 1
                         blank(a.x, a.y)
-                        ex(a.x, a.x+1/8, a.y, a.y+1/8)
-                        pygame.display.update()
+                        if xc == black:
+                            blair(a.x, a.y)
+                            board()
+                            pygame.display.update()
+                        else:
+                            ex(a.x, a.x+1/8, a.y, a.y+1/8)
+                            pygame.display.update()
                     elif a.taken == 1:
-                        a.taken -= 1
+                        a.taken += 1
                         blank(a.x, a.y)
-                        circle(a.x+1/16, a.y+1/16)
+                        if cc == black:
+                            blair(a.x, a.y)
+                            board()
+                            pygame.display.update()
+                        else:
+                            circle(a.x+1/16, a.y+1/16)
+                            pygame.display.update()
+                    elif a.taken == 2:
+                        a.taken -= 2
+                        blank(a.x, a.y)
                         pygame.display.update()
     board()
 
@@ -331,7 +362,7 @@ def gameloop(cc, xc):
             if event.type==pygame.VIDEORESIZE:
                 dis_height = dis.get_height()
                 dis_width = dis.get_width()
-                dis.fill(gray)
+                dis.fill(fuchsia)
                 a1 = area(0,0,0)
                 a2 = area(1/8,0,0)
                 a3 = area(2/8,0,0)
@@ -397,10 +428,11 @@ def gameloop(cc, xc):
                 h7 = area(6/8,7/8,0)
                 h8 = area(7/8,7/8,0)
                 so = (dis_width + dis_height)/240
-                font_style = pygame.font.SysFont("bahnschrift", int(so*8))
                 rad = dis_width
                 if dis_width > dis_height:
                     rad = dis_height
+                blairimg = pygame.image.load("blair.png")
+                blairimg = pygame.transform.scale(blairimg, (rad/8, rad/8))
                 board()
                 pygame.display.update()
             move(a1)
