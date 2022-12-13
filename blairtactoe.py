@@ -138,8 +138,16 @@ def startscreen(xc, cc):
                 "white_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*10), (so*10, so*2)), text="White", manager=manager),
                 "brook_buttono" : pygame_gui.elements.UIButton(relative_rect=pygame.Rect((dis_width*3/4-so*5, dis_height*1/2+so*12), (so*10, so*2)), text="BROOK", manager=manager)
                 }
-                ex(xc)
-                circle(cc)
+                if xc == black:
+                    blank(1/8, 1/5)
+                    blair(1/8, 1/5)
+                else:
+                    ex(xc)
+                if cc == black:
+                    blank(5/8, 1/5)
+                    brook(5/8, 1/5)
+                else:
+                    circle(cc)
                 blairimg = pygame.image.load("blair.png")
                 blairimg = pygame.transform.scale(blairimg, (so*10, so*10))
                 brookimg = pygame.image.load("brook.png")
@@ -375,7 +383,10 @@ def gameloop(cc, xc, bgcolor):
                         a.taken += 1
                         blank(a.x, a.y)
                         if xc == black:
-                            blair(a.x, a.y)
+                            if dis_width > dis_height:
+                                blair(a.x+(1/40), a.y)
+                            else:
+                                blair(a.x, a.y)
                             board()
                             pygame.display.update()
                         else:
@@ -385,7 +396,10 @@ def gameloop(cc, xc, bgcolor):
                         a.taken += 1
                         blank(a.x, a.y)
                         if cc == black:
-                            brook(a.x, a.y)
+                            if dis_width > dis_height:
+                                brook(a.x+(1/40), a.y)
+                            else:
+                                brook(a.x, a.y)
                             board()
                             pygame.display.update()
                         else:
